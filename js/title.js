@@ -1,9 +1,11 @@
-// 浏览器搞笑标题
+ /**
+   * 浏览器离开和点击标题样式
+   */
 var OriginTitle = document.title;
 var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-        document.title = '>>>Fbi Warning';
+        document.title = 'FBL Warning';
         clearTimeout(titleTime);
     }
     else {
