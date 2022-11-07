@@ -18,6 +18,39 @@ body,
 :root {
     --cxl2020mc-radius: 7px;
     --cxl2020mc-card-border-width: 1px;
+    --youngers-white: #fff;
+    --youngers-white-op: rgba(255, 255, 255, 0.2);
+    --youngers-black: #000;
+    --youngers-black-op: rgba(0, 0, 0, 0.2);
+    --youngers-none: #00000000;
+    --youngers-gray: #999999;
+    --youngers-gray-op: #9999992b;
+    --youngers-vip: #e5a80d;
+    --youngers-main: var(--youngers-theme);
+    --youngers-main-op: var(--youngers-theme-op);
+    --youngers-main-op-deep: var(--youngers-theme-op-deep);
+    --youngers-main-none: var(--youngers-theme-none);
+    --youngers-shadow-theme: 0 8px 12px -3px var(--youngers-theme-op);
+    --youngers-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0, .15);
+    --youngers-shadow-main: 0 8px 12px -3px var(--youngers-main-op);
+    --youngers-shadow-blue: 0 8px 12px -3px rgba(40, 109, 234, .20);
+    --youngers-shadow-white: 0 8px 12px -3px rgba(255, 255, 255, .20);
+    --youngers-shadow-black: 0 0 12px 4px rgba(0, 0, 0, .05);
+    --youngers-shadow-yellow: 0px 38px 77px -26px rgba(255, 201, 62, .12);
+    --youngers-shadow-red: 0 8px 12px -3px #ee7d7936;
+    --youngers-shadow-green: 0 8px 12px -3px #87ee7936;
+    --youngers-logo-color: linear-gradient(215deg, #4584ff 0%, #cf0db9 100%);
+    --youngers-snackbar-time: 5s;
+    --style-border: 1px solid var(--youngers-card-border);
+    --style-border-always: 1px solid var(--youngers-card-border);
+    --style-border-hover: 1px solid var(--youngers-main);
+    --style-border-hover-always: 1px solid var(--youngers-main);
+    --style-border-dashed: 1px dashed var(--youngers-theme-op);
+  }
+  
+  ::selection {
+    background: var(--youngers-fontcolor);
+    color: var(--youngers-background);
   }
   
   /* 浅色模式颜色 */
@@ -602,10 +635,306 @@ img.footer_mini_logo:hover {
 }
   /*修改页脚样式 ---------- End*/  
 
+  /*修改数字雨样式 ---------- Start*/    
 #CanvasBG {
     width:100%;
     height:100%;
     background-color: #191a1a;
     display: flex;
 }
+  /*修改数字雨样式 ---------- End*/ 
 
+  /*修改页数样式 ---------- End*/    
+#pagination {
+    overflow: hidden;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  /*修改页数样式 ---------- End*/    
+
+
+ /* 导航栏音乐 */
+@media screen and (max-width: 1300px) {
+    #nav-music {
+      display: none !important;
+    }
+  }
+  
+  #nav-music {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    transform-origin: left bottom;
+    box-shadow: var(--youngers-shadow-border);
+    border-radius: 40px;
+  }
+  
+  #nav-music:active {
+    transform: scale(0.97);
+  }
+  
+  #nav-music.playing {
+    box-shadow: 0 0px 12px -3px var(--youngers-none);
+    -webkit-animation: playingShadow 5s linear infinite;
+  }
+  
+  @-webkit-keyframes playingShadow {
+    0% {
+      box-shadow: 0 0px 12px -3px var(--youngers-none);
+    }
+  
+    50% {
+      box-shadow: 0 0px 12px 0px var(--youngers-main);
+    }
+  
+    100% {
+      box-shadow: 0 0px 12px -3px var(--youngers-none);
+    }
+  }
+  
+  #nav-music .aplayer.aplayer-withlrc .aplayer-pic {
+    height: 25px;
+    width: 25px;
+    border-radius: 40px;
+    z-index: 1;
+    transition: 0.3s;
+    -webkit-transform: rotate(0deg)scale(1);
+    border: var(--style-border-always);
+    -webkit-animation: changeright 24s linear infinite;
+    animation-play-state: paused;
+  }
+  
+  #nav-music.playing .aplayer.aplayer-withlrc .aplayer-pic {
+    box-shadow: 0 0 14px #ffffffa6;
+    -webkit-transform: rotate(0deg)scale(1.1);
+    border-color: var(--youngers-white);
+    animation-play-state: running;
+  }
+  
+  @-webkit-keyframes changeright {
+  
+    0% {
+      -webkit-transform: rotate(0deg)scale(1.1);
+      box-shadow: 0 0 2px #ffffff00;
+    }
+  
+    25% {
+      -webkit-transform: rotate(90deg)scale(1.1);
+      box-shadow: 0 0 14px #ffffff;
+    }
+  
+    50% {
+      -webkit-transform: rotate(180deg)scale(1.1);
+      box-shadow: 0 0 2px #ffffff00;
+    }
+  
+    75% {
+      -webkit-transform: rotate(270deg)scale(1.1);
+      box-shadow: 0 0 14px #ffffff;
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg)scale(1.1);
+      box-shadow: 0 0 2px #ffffff00;
+    }
+  }
+  
+  #nav-music .aplayer.aplayer-withlrc .aplayer-info {
+    height: 100%;
+    color: var(--youngers-fontcolor);
+    margin-left: 8px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  #nav-music.playing .aplayer.aplayer-withlrc .aplayer-info {
+    color: var(--youngers-white);
+  }
+  
+  #nav-music #nav-music-hoverTips {
+    color: var(--youngers-white);
+    background: var(--youngers-main);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 40px;
+    opacity: 0;
+    font-size: 12px;
+    transition: 0s;
+    z-index: 2;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  
+  #nav-music:hover:not(.playing) #nav-music-hoverTips {
+    opacity: 1;
+  }
+  
+  #nav-music.playing #nav-music-hoverTips {
+    opacity: 0;
+  }
+  
+  #nav-music .aplayer {
+    background: var(--card-bg);
+    border-radius: 60px;
+    height: 41px;
+    display: flex;
+    margin: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    border: var(--style-border);
+    box-shadow: none;
+  }
+  
+  #nav-music.playing .aplayer {
+    background: var(--youngers-main-op-deep);
+    border: var(--style-border-hover);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  #nav-music .aplayer .aplayer-notice {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-miniswitcher {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    padding-right: 12px;
+  }
+  
+  #nav-music .aplayer .aplayer-pic .aplayer-play {
+    opacity: 0;
+  }
+  
+  #nav-music .aplayer-list {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-music {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    z-index: 1;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-music .aplayer-author {
+    display: none;
+  }
+  
+  #nav-music .aplayer.aplayer-withlist .aplayer-info {
+    border: none;
+  }
+  
+  #nav-music .aplayer .aplayer-pic div {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-music .aplayer-title {
+    cursor: pointer;
+    line-height: 1;
+    display: inline-block;
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 0.3s;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+    height: 100%;
+    background: none;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+    height: 100%;
+    opacity: 0.1;
+    background-color: var(--youngers-white) !important;
+    -webkit-animation: lightBar 5s ease infinite;
+  }
+  
+  @-webkit-keyframes lightBar {
+  
+    0% {
+      opacity: 0.1;
+    }
+  
+    60% {
+      opacity: 0.3;
+    }
+  
+    100% {
+      opacity: 0.1;
+    }
+  }
+  
+  
+  /* 歌词 */
+  #nav-music .aplayer.aplayer-withlrc .aplayer-lrc {
+    width: 0;
+    opacity: 0;
+    transition: 0.3s;
+    margin-left: 8px;
+    margin-top: -2px;
+  }
+  
+  #nav-music.playing .aplayer.aplayer-withlrc .aplayer-lrc {
+    width: 200px;
+    margin-bottom: 0;
+    opacity: 1;
+  }
+  
+  #nav-music .aplayer .aplayer-lrc p.aplayer-lrc-current {
+    color: var(--youngers-white);
+    border: none;
+  }
+  
+  #nav-music .aplayer .aplayer-lrc:after,
+  #nav-music .aplayer .aplayer-lrc:before {
+    display: none;
+  }
+  
+  #nav-music .aplayer .aplayer-lrc p {
+    color: #ffffffb3;
+  }
+   
+  
