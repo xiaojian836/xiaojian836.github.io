@@ -1,0 +1,1 @@
+var posts=["2023/10/01/ASP.NET/ASP.NET WebPages 简介/","2023/10/01/ASP.NET/ASP.NET 教程/","2023/10/01/ASP.NET/ASP.NET 简介/"];function toRandomPost(){pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);};
